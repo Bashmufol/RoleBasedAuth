@@ -34,3 +34,8 @@ build/
 
 ## Environment ##
 .env
+
+#ignore data.sql and PasswordEncoderGenerator
+/src/main/resources/data.sql
+/src/main/java/com/bash/rolebasedpractice/PasswordEncoderGenerator.java
+

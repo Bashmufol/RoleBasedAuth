@@ -25,4 +25,5 @@ public class Controller {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userService.registerUser(user);
     }
+
 }
