@@ -3,6 +3,9 @@ package com.bash.rolebasedpractice.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -14,6 +17,15 @@ public class Users {
     private long id;
     private String username;
     private String password;
-    private String email;
 
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles = new HashSet<>();
+
+    public Users(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.roles.add(Role.USER);
+    }
 }
