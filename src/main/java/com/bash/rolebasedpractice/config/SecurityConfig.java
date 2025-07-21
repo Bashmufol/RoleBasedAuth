@@ -29,6 +29,7 @@ public class SecurityConfig {
                         .requestMatchers( "/manager/**", "/users/**", "/users", "/products/**").hasAnyRole("ADMIN", "MANAGER")
                         .requestMatchers(HttpMethod.POST, "/products/").hasAuthority("ADMIN_CREATE")
                         .requestMatchers(HttpMethod.DELETE, "/products/**").hasAuthority("ADMIN_DELETE")
+                        .requestMatchers(HttpMethod.PUT, "/products/**").hasAnyAuthority("ADMIN_UPDATE", "MANAGER_UPDATE")
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

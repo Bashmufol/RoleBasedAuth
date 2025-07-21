@@ -1,11 +1,12 @@
 package com.bash.rolebasedpractice.service;
 
+import com.bash.rolebasedpractice.model.Role;
 import com.bash.rolebasedpractice.model.Users;
 import com.bash.rolebasedpractice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +24,12 @@ public class UserService {
     }
 
     public Users registerUser(Users user) {
+        if (user.getRoles() == null) {
+            user.setRoles(new HashSet<>());
+        }
+        if (user.getRoles().isEmpty()) { // Check if the set is empty
+            user.getRoles().add(Role.USER);
+        }
         return userRepository.save(user);
     }
 

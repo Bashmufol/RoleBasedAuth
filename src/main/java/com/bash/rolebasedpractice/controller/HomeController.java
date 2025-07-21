@@ -18,6 +18,7 @@ public class HomeController {
     private final UserService userService;
 
     @GetMapping("/")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER', 'MANAGER')")
     public String getHome(){
         return "Welcome to my project home page!";
     }
