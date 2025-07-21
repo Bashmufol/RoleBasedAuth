@@ -23,13 +23,13 @@ public class ProductController {
     }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @PreAuthorize("hasAuthority('ADMIN_CREATE')")
-    public Products addProduct(Products product) {
+    @PreAuthorize("hasAuthority('admin:create')")
+    public Products addProduct(@RequestBody Products product) {
         return productService.saveProduct(product);
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN_UPDATE') or hasAuthority('MANAGER_UPDATE')")
+    @PreAuthorize("hasAuthority('admin:update') or hasAuthority('manager:update')")
     public Optional<Products> updateProduct(@PathVariable Long id, @RequestBody Products product) {
         return productService.updateProduct(id, product);
     }
@@ -41,7 +41,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN_DELETE')")
+    @PreAuthorize("hasAuthority('admin:delete')")
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
     }
