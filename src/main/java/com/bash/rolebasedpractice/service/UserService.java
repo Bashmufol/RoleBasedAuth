@@ -33,4 +33,13 @@ public class UserService {
         return userRepository.save(user);
     }
 
+//    public Users createAdmin2() {
+//        Users admin2 = new Users();
+//        admin2.setUsername("admin2");
+//        admin2.setPassword(passwordEncoder.encode("password456"));
+//        admin2.getRoles().add(Role.ADMIN); // Still assign the ADMIN role if desired
+//        admin2.getIndividualPermissions().add("admin:read");
+//        admin2.getIndividualPermissions().add("admin:update");
+//        return userRepository.save(admin2);
+//    }
 }

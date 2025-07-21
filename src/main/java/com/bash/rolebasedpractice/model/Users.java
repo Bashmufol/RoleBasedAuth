@@ -23,6 +23,11 @@ public class Users {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
+//    New field for user-specific permissions
+//    @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
+//    @CollectionTable(name = "user_permissions", joinColumns = @JoinColumn(name = "user_id"))
+//    private Set<String> individualPermissions = new HashSet<>();
+
     public Users(String username, String password) {
         this.username = username;
         this.password = password;

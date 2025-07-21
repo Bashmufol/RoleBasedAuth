@@ -17,6 +17,11 @@ public class UserPrincipal implements UserDetails {
         return users.getRoles().stream()
                 .flatMap(role -> role.getAuthorities().stream())
                 .collect(Collectors.toList());
+
+//        Add individual user-specific permissions
+//        users.getIndividualPermissions().stream()
+//                .map(SimpleGrantedAuthority::new)
+//                .forEach(authorities::add);
     }
 
     @Override

@@ -24,6 +24,7 @@ public class HomeController {
     }
 
     @GetMapping("/users")
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     public List<Users> getUsers(){
         return userService.getAllUsers();
     }
