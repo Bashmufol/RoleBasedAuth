@@ -39,6 +39,7 @@ public class ProductService {
             existingProduct.setProductPrice(product.getProductPrice());
             existingProduct.setProductDescription(product.getProductDescription());
             existingProduct.setProductCategory(product.getProductCategory());
+            productRepository.save(existingProduct);
             return Optional.of(existingProduct);
         } else {
             throw new ResourceNotFoundException("Product not found with ID: " + id);
